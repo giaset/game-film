@@ -1,10 +1,15 @@
 /* global flowplayer */
 import Component from '@ember/component';
+import { observer } from '@ember/object';
 
 export default Component.extend({
   elementId: 'flowplayer',
 
   didInsertElement() {
+    this.updateVideo();
+  },
+
+  updateVideo: observer('gameId', function() {
     flowplayer('#flowplayer', {
       clip: {
         sources: [
@@ -13,5 +18,5 @@ export default Component.extend({
         ]
       }
     });
-  }
+  })
 });
